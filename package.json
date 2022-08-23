@@ -1,0 +1,20 @@
+{
+  "name": "apicaro",
+  "version": "1.0.0",
+  "description": "API de venda de produtos para prova UEPA ",
+  "main": "src/index.js",
+  "repository": "https://github.com/antunesicaro/apiUEPA.git",
+  "author": "Icaro Antunes <icarodasilva.12@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "pg": "^8.7.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
