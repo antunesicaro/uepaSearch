@@ -2,6 +2,7 @@ const { Router } = require('express');
 
 const ClientController = require('./app/controllers/ClientController')
 const ProdutoController = require('./app/controllers/ProdutoController')
+const VendaController = require('./app/controllers/VendaController')
 
 
 
@@ -18,6 +19,12 @@ router.get('/produtos/:codProduto', ProdutoController.show)
 router.delete('/produtos/:codProduto', ProdutoController.delete)
 router.post('/produtos', ProdutoController.store)
 router.put('/produtos/:codProduto', ProdutoController.update)
+
+router.get('/vendas', VendaController.index)
+router.get('/vendas/:codVenda', VendaController.show)
+router.delete('/vendas/:codVenda', VendaController.delete)
+router.post('/vendas', VendaController.store)
+
 
 
 
