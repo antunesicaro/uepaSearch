@@ -56,6 +56,7 @@ FOREIGN KEY (produto) REFERENCES Produto(codProduto)
 
 -Executar o projeto --> yarn start
 -Baixar o insomnia e testar todas requisiçoes do servidor, criando rotas. O servidor será startado na porta 3005, cuidado para já não ter outra na sua máquina e dar erro.
+-Com a api rodando no insominia ou postman, faça rotas e requisições para popular o banco. Sempre olhando para o routes.js,que é onde tem toda explicação das rotas.
 
 
 # Design pattern e arquiterura: Motivações de escolha:
@@ -67,7 +68,23 @@ Repository Pattern para permitir a troca do banco de dados utilizado sem afetar 
 
 
 
+# Executando o front da aplicação
+-Como a api está em localhost, vamos precisar usar o ngrok : https://dashboard.ngrok.com/ e https://ngrok.com/docs/secure-tunnels#http-tunnels
+-Crie uma conta e você irá obter um authtoken que irá deixar a sua api local, como de um webservice.
+-Baixe o exe do ngrok
+-Digite os comandos no seu terminal: ngrok authtoken --coleseutokenaqui para ter acesso à sua api online
+-Abra novamente o terminal e digite: ngrok http http://localhost:3005 para linkar o tunel da api com a da aplicação
+-a conexão será feita e você terá acesso à webinterface e ao forwarding da api, que é justamente onde ela está online.
 
+
+# Rendezirando
+- Para renderizar iremos usar o cronapp, acesse: https://acesso.cronapp.io/#  , faça login e entre
+-Clique em novo projeto, mobile e web e selecione a opção e importar o arquivo em zip que está no sigaa
+-Dê um nome e clique em finalizar, selecione o projeto e o execute.
+-Após isso, vá em fonte de dados no projeto, clique sob o webservice chamado cliente.
+-Mude seu valor de webservice para o valor do seu link que será retornado do ngrok, que é o que diz que sua api está online.
+-Mude também o endpoint para o que desejar, de preferência o "/clients" ... faça isso para todas as outras entidades.
+-Execute a aplicação e veja as telas(para fazer login o usuário é admin admin)
 
 
 
