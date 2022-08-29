@@ -12,6 +12,7 @@
 -Criar uma database--> CREATE DATABASE sistemauepa
 -Conectar na base de dados sistemauepa --> \c sistemauepa
 -Copiar e colar esse backup de banco para criar localmente seu banco:
+
 CREATE TABLE IF NOT EXISTS Cliente(
 codCliente BIGINT NOT NULL UNIQUE,
 cpf VARCHAR(15),
@@ -84,7 +85,7 @@ Repository Pattern para permitir a troca do banco de dados utilizado sem afetar 
 -Após isso, vá em fonte de dados no projeto, clique sob o webservice chamado cliente.
 -Mude seu valor de webservice para o valor do seu link que será retornado do ngrok, que é o que diz que sua api está online.
 -Mude também o endpoint para o que desejar, de preferência o "/clients" ... faça isso para todas as outras entidades.
--Execute a aplicação e veja as telas(para fazer login o usuário é admin admin)
+-Execute a aplicação e veja as telas(para fazer login o usuário é admin e a senha admin)
 
 
 
