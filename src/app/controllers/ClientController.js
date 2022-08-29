@@ -1,9 +1,10 @@
 const ClientsRepository = require('../repositories/ClientsRepository');
+const AuxilioController = require('./AuxilioController');
 
-//parei em criando as rotas show delete
+
 
 class ClientController{
-    //parei em ordernando
+   
 
     async index(request,response){ //lista todos registros
        const clients = await ClientsRepository.findAll();
@@ -25,21 +26,37 @@ class ClientController{
 
     async store(request,response){ //cria um cliente
 
-      const {codCliente,cpf,nomeCliente,email,renda,classe} = request.body;
+      const {codCliente,cpf,nomeCliente,email,renda} = request.body;
 
     if(!nomeCliente){
       return response.status(400).json({ error : 'Nome obrigatório' });
     }
 
-    const clientExists = await ClientsRepository.findByEmail(email);
+    const clientExists = await ClientsRepository.findByCodCli(codCliente);
 
     if(clientExists){
-      return response.status(400).json({ error : 'Email já em uso' });
+      return response.status(400).json({ error : 'Id para cliente já em uso' });
     }
 
-    //else
+    const validCpf = await AuxilioController.validaCpf(cpf);
+
+    if(!validCpf){
+      return response.status(400).json({ error : 'Cpf não é válido' });
+    }
+
+    const validEmail = await AuxilioController.validaEmail(email)
+
+    if(!validEmail){
+      return response.status(400).json({ error : 'Email não é válido' });
+    }
+    
+    const classeSoc = await AuxilioController.calculaClasse(renda)
+
+
+
+    //else,sucesso
     const client = await ClientsRepository.create(
-      {codCliente,cpf,nomeCliente,email,renda,classe}
+      {codCliente,cpf,nomeCliente,email,renda,classeSoc}
     );
 
     response.json(client);
@@ -48,7 +65,7 @@ class ClientController{
     async update(request,response){ //atualiza um cliente
 
     const { codCliente } = request.params;
-    const { cpf,nomeCliente,email,renda,classe } = request.body;
+    const { cpf,nomeCliente,email,renda} = request.body;
 
 
     const clientExists = await ClientsRepository.findByCodCli(codCliente);
@@ -68,8 +85,10 @@ class ClientController{
       return response.status(400).json({error:'email já em uso if'});
     }
 
+    const classeSoc = await AuxilioController.calculaClasse(renda)
+
     const client = await ClientsRepository.update(codCliente,{
-      cpf,nomeCliente,email,renda,classe
+      cpf,nomeCliente,email,renda,classeSoc
     });
 
     response.json(client);
@@ -91,6 +110,9 @@ class ClientController{
     
         response.sendStatus(204);
       }
+
+      
+      
     
     }
 

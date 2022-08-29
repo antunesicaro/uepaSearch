@@ -1,4 +1,5 @@
 const ProdutosRepository = require('../repositories/ProdutosRepository');
+const AuxilioController = require('./AuxilioController');
 
 
 
@@ -76,6 +77,16 @@ class ProdutoController{
         await ProdutosRepository.delete(codProduto);
         response.sendStatus(204);
       }
+
+
+    async baixarEstoque(request,response){
+      const {qtdParaDiminuir} = request.params
+
+      
+    }
+
+
+      
     
     }
 

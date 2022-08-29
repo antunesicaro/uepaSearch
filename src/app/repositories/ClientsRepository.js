@@ -32,7 +32,7 @@ async findAll(){
     }
 
     async update(codCliente,{
-      cpf,nomeCliente,email,renda,classe
+      cpf,nomeCliente,email,renda,classeSoc
     }){
 
       //db.query retorna um array, dai desestrutura pra ter acesso à priemira posição
@@ -41,22 +41,22 @@ async findAll(){
       SET cpf = $1, nomeCliente = $2, email = $3, renda = $4, classe = $5
       WHERE codCliente = $6
       RETURNING *
-      `,[cpf,nomeCliente,email,renda,classe,codCliente]);      
+      `,[cpf,nomeCliente,email,renda,classeSoc,codCliente]);      
       return row;
     }
 
     async create({
-        codCliente,cpf,nomeCliente,email,renda,classe 
+        codCliente,cpf,nomeCliente,email,renda,classeSoc 
     }){
         const [row] = await db.query(`INSERT INTO Cliente(codCliente,cpf,nomeCliente,email,renda,classe ) 
         VALUES($1,$2,$3,$4,$5,$6) 
         RETURNING *
-        `,[codCliente,cpf,nomeCliente,email,renda,classe]) //cria nova linha de registro
+        `,[codCliente,cpf,nomeCliente,email,renda,classeSoc]) //cria nova linha de registro
 
         return row;
     }
 
-
+    
 
 
 }
