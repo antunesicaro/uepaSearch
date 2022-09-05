@@ -1,3 +1,4 @@
+
 const { Client } = require('pg');
 
 const client = new Client({
@@ -5,7 +6,7 @@ const client = new Client({
     port:5432,
     user:'root',
     password:'root',
-    database:'sistemauepa',
+    database:'uepaprocura',
     idleTimeoutMillis: 0,
     connectionTimeoutMillis: 0
 })
