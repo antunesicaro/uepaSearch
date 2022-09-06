@@ -10,7 +10,7 @@
 -Entrar no container para dar instruções sql e criar o banco local --> docker exec -it pganderson bash
 -Entrar no root --> psql -U root
 -Criar uma database--> CREATE DATABASE uepaprocura
--Conectar na base de dados sistemauepa --> \c uepaprocura
+-Conectar na base de dados uepaprocura --> \c uepaprocura
 -Copiar e colar esse backup de banco para criar localmente seu banco:
 CREATE DATABASE uepaprocura
 
